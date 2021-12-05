@@ -34,3 +34,8 @@ To build, run ```docker-compose build```
 ## Running
 To run the web API, run ```docker-compose up -d```, then 
 go to http://localhost:8000/pokemon/ using your web browser.
+
+## Populating the Database
+This must be done only once in order to provide data for the API. 
+To do so, run ```docker exec -it api bash``` to enter the API container, 
+then run ```python manage.py loaddata data.json``` to populate the database.
