@@ -7,11 +7,10 @@ ENV PYTHONUNBUFFERED 1
 # set directory
 WORKDIR /app
 
-# install dependencies
-COPY Pipfile Pipfile.lock ./
+# add application and install dependencies
+COPY Pipfile Pipfile.lock api ./
 RUN pip install pipenv
-RUN pipenv install --system --deploy
+RUN pipenv install --system --deploy --ignore-pipfile
 
-# add application
-COPY PokemonAPI ./
+# expose port(s)
 EXPOSE 8000
