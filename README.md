@@ -50,10 +50,3 @@ To do so, run ```docker exec -it backend python manage.py loaddata data.json```.
 
 To create a staff user, run ```docker exec -it backend python manage.py createsuperuser```
 and fill out the fields in the prompt.
-
-## Issues
-While this project is intended to be used as an API, it can be 
-used to visually see the data using Django Rest Framework's templates.
-However, there are several issues with this:
-  1. The static files are currently not being served.
-  2. The URLs in the Django Rest Framework pages may not work.
