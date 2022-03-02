@@ -28,7 +28,11 @@ DEBUG = bool(os.environ.get("DEBUG").lower() in ('true', 't', '1'))
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split()
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    fr'{regex}' for regex in os.environ.get('CORS_ALLOWED_ORIGIN_REGEXES').split()
+]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Application definition
 
