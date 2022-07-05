@@ -1,7 +1,7 @@
 from rest_framework.serializers import ModelSerializer
-from .models import Pokemon
+from pokemon.models import Pokemon
 
 class PokemonSerializer(ModelSerializer):
     class Meta:
         model = Pokemon
-        fields = "__all__"
+        fields = '__all__'

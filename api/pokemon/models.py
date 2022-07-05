@@ -133,5 +133,5 @@ class Pokemon(models.Model):
         return self.name
 
     class Meta:
-        ordering = ("id",)
-        verbose_name_plural = "Pokemon"
+        ordering = ('id',)
+        verbose_name_plural = 'Pokemon'
