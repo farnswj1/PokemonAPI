@@ -42,7 +42,7 @@ To build, run ```docker-compose build```
 
 ## Running
 To run the web API, run ```docker-compose up -d```, then 
-go to http://localhost/api/docs/ using your web browser.
+go to http://localhost/api/docs using your web browser.
 
 ## Populating the Database
 This project provides data to use for the project.
