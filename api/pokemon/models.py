@@ -33,7 +33,6 @@ class Pokemon(models.Model):
 
     name = models.CharField(
         max_length=30,
-        null=False,
         unique=True,
         validators=[
             MinLengthValidator(2),
@@ -44,7 +43,6 @@ class Pokemon(models.Model):
     )
     type1 = models.CharField(
         max_length=10,
-        null=False,
         choices=TYPES,
         validators=[
             MinLengthValidator(3),
@@ -65,7 +63,6 @@ class Pokemon(models.Model):
         ]
     )
     total = models.IntegerField(
-        null=False,
         default=0,
         validators=[
             MinValueValidator(0),
@@ -73,7 +70,6 @@ class Pokemon(models.Model):
         ]
     )
     hp = models.IntegerField(
-        null=False,
         default=0,
         validators=[
             MinValueValidator(0),
@@ -81,7 +77,6 @@ class Pokemon(models.Model):
         ]
     )
     attack = models.IntegerField(
-        null=False,
         default=0,
         validators=[
             MinValueValidator(0),
@@ -89,7 +84,6 @@ class Pokemon(models.Model):
         ]
     )
     defense = models.IntegerField(
-        null=False,
         default=0,
         validators=[
             MinValueValidator(0),
@@ -97,7 +91,6 @@ class Pokemon(models.Model):
         ]
     )
     special_attack = models.IntegerField(
-        null=False,
         default=0,
         validators=[
             MinValueValidator(0),
@@ -105,7 +98,6 @@ class Pokemon(models.Model):
         ]
     )
     special_defense = models.IntegerField(
-        null=False,
         default=0,
         validators=[
             MinValueValidator(0),
@@ -113,7 +105,6 @@ class Pokemon(models.Model):
         ]
     )
     speed = models.IntegerField(
-        null=False,
         default=0,
         validators=[
             MinValueValidator(0),
@@ -121,7 +112,6 @@ class Pokemon(models.Model):
         ]
     )
     generation = models.IntegerField(
-        null=False,
         validators=[
             MinValueValidator(1),
             MaxValueValidator(6)
