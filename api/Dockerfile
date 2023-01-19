@@ -4,6 +4,9 @@ FROM python:3.11
 # set environment variables
 ENV PYTHONUNBUFFERED 1
 
+# expose port(s)
+EXPOSE 8000
+
 # set directory
 WORKDIR /opt/app
 
