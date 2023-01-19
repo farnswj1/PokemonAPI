@@ -2,6 +2,7 @@ from django.urls import path
 from rest_framework.schemas import get_schema_view
 from core import views
 
+
 app_name = 'core'
 
 schema = get_schema_view(

@@ -3,17 +3,18 @@ This is an API that provides data on Pokemon.
 
 ## Setup
 The project uses the following:
-- Python 3.8
-- Django 3.2.8
+- Python 3.11
+- Django 4.1
 - MySQL 8
-- Redis 5
-- Nginx 1.21
+- Redis 7
+- Nginx 1.23
+- Certbot
 - Docker
 - Docker Compose
 
 For additional information on project specifications, see the ```Pipfile```.
 
-### Environment
+### Setting up the API
 In the ```api/``` directory, create a ```.env``` file
 that contains the following environment variables:
 ```
@@ -32,22 +33,28 @@ DB_PORT=3306
 
 REDIS_URL=redis://redis:6379/1
 ```
-The database variables can be changed as desired. However, make sure to update
-the environment variables in ```docker-compose.yml``` as well.
+
+### Setting up MySQL
+In the ```mysql/``` directory, create a ```.env``` file
+that contains the following environment variables:
+```
+MYSQL_DATABASE=PokemonAPI
+MYSQL_ROOT_PASSWORD=password
+```
 
 ## Building
 The project uses Docker. Ensure Docker and Docker Compose are installed before continuing.
 
-To build, run ```docker-compose build```
+To build, run ```docker compose build```
 
 ## Running
-To run the web API, run ```docker-compose up -d```, then 
+To run the web API, run ```docker compose up -d```, then 
 go to http://localhost/api/docs using your web browser.
 
 ## Populating the Database
 This project provides data to use for the project.
 Populating the database should only be done once to avoid duplicate data. 
-To do so, run ```docker exec -it backend python manage.py loaddata data.json```.
+To do so, run ```docker exec api python manage.py loaddata data.json```.
 
-To create a staff user, run ```docker exec -it backend python manage.py createsuperuser```
+To create a staff user, run ```docker exec -it api python manage.py createsuperuser```
 and fill out the fields in the prompt.

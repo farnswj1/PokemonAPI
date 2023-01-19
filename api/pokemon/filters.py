@@ -6,6 +6,7 @@ from django_filters.rest_framework import (
 )
 from pokemon.models import Pokemon
 
+
 class PokemonFilterSet(FilterSet):
     name = CharFilter('name', label='Name', lookup_expr='icontains')
     type1 = CharFilter('type1', label='Type 1', lookup_expr='icontains')

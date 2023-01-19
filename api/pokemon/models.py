@@ -8,6 +8,7 @@ from django.core.validators import (
     ProhibitNullCharactersValidator
 )
 
+
 # Create your models here.
 class Pokemon(models.Model):
     TYPES = (

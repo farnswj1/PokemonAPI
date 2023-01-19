@@ -2,6 +2,7 @@ from django.views.generic import TemplateView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from core.serializers import MyTokenObtainPairSerializer
 
+
 # Create your views here.
 class MyTokenObtainPairView(TokenObtainPairView):
     """
