@@ -18,11 +18,11 @@ from django.urls import path, include
 
 
 app_urls = [
-    path('admin/', admin.site.urls),
     path('', include('core.urls')),
     path('pokemon/', include('pokemon.urls')),
 ]
 
 urlpatterns = [
-    path('api/', include(app_urls)),
+    path('api/', include((app_urls, 'api'))),
+    path('api/admin/', admin.site.urls),
 ]

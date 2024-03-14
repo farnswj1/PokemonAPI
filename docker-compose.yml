@@ -1,13 +1,13 @@
 version: "3.9"
 services:
-  mysql:
-    container_name: mysql
-    image: mysql:8
+  postgres:
+    container_name: postgres
+    image: postgres:16
     restart: always
     env_file:
-      - ./mysql/.env
+      - ./postgres/.env
     volumes:
-      - mysql_data:/var/lib/mysql:rw
+      - postgres_data:/var/lib/postgresql/data/:rw
   redis:
     container_name: redis
     image: redis:7
@@ -24,11 +24,11 @@ services:
     volumes:
       - api_static:/opt/app/static:rw
     depends_on:
-      - mysql
+      - postgres
       - redis
   nginx:
     container_name: nginx
-    image: nginx:1.23-alpine
+    image: nginx:1.25-alpine
     restart: always
     ports:
       - "80:80"
@@ -50,7 +50,7 @@ services:
     depends_on:
       - nginx
 volumes:
-  mysql_data:
+  postgres_data:
   redis_data:
   api_static:
   certbot_data:

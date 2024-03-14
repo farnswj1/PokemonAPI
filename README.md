@@ -3,11 +3,11 @@ This is an API that provides data on Pokemon.
 
 ## Setup
 The project uses the following:
-- Python 3.11
-- Django 4.1
-- MySQL 8
-- Redis 7
-- Nginx 1.23
+- Python 3
+- Django
+- PostgreSQL
+- Redis
+- Nginx
 - Certbot
 - Docker
 - Docker Compose
@@ -24,9 +24,8 @@ DEBUG=False
 ALLOWED_HOSTS=localhost 127.0.0.1
 CORS_ALLOWED_ORIGIN_REGEXES=^https?://(localhost|127\.0\.0\.1)$
 
-DB_ENGINE=django.db.backends.mysql
 DB_NAME=PokemonAPI
-DB_HOST=mysql
+DB_HOST=postgres
 DB_USER=root
 DB_PASSWORD=password
 DB_PORT=3306
@@ -34,12 +33,13 @@ DB_PORT=3306
 REDIS_URL=redis://redis:6379/1
 ```
 
-### Setting up MySQL
-In the ```mysql/``` directory, create a ```.env``` file
+### Setting up PostgreSQL
+In the ```postgres/``` directory, create a ```.env``` file
 that contains the following environment variables:
 ```
-MYSQL_DATABASE=PokemonAPI
-MYSQL_ROOT_PASSWORD=password
+POSTGRES_DB=pokemonapi
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=password
 ```
 
 ## Building
