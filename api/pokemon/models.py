@@ -38,7 +38,7 @@ class Pokemon(models.Model):
         unique=True,
         validators=[
             MinLengthValidator(2),
-            MaxLengthValidator(50),
+            MaxLengthValidator(30),
             RegexValidator(r"^[A-Z][A-Za-z0-9% \-'\.\(\)]+$"),
             ProhibitNullCharactersValidator()
         ]
