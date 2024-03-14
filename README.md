@@ -24,11 +24,11 @@ DEBUG=False
 ALLOWED_HOSTS=localhost 127.0.0.1
 CORS_ALLOWED_ORIGIN_REGEXES=^https?://(localhost|127\.0\.0\.1)$
 
-DB_NAME=PokemonAPI
+DB_NAME=pokemonapi
 DB_HOST=postgres
-DB_USER=root
+DB_USER=postgres
 DB_PASSWORD=password
-DB_PORT=3306
+DB_PORT=5432
 
 REDIS_URL=redis://redis:6379/1
 ```
