@@ -7,6 +7,7 @@ from django.core.validators import (
     RegexValidator,
     ProhibitNullCharactersValidator
 )
+from django.urls import reverse
 
 
 # Create your models here.
@@ -132,6 +133,9 @@ class Pokemon(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('api:pokemon:detail', args=(self.pk,))
 
     class Meta:
         ordering = ('id',)
