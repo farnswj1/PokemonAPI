@@ -13,7 +13,7 @@ WORKDIR /opt/app
 # add application and install dependencies
 RUN pip install pipenv
 COPY Pipfile Pipfile.lock ./
-RUN pipenv install --system --deploy --ignore-pipfile
+RUN pipenv install --system --dev --deploy --ignore-pipfile
 COPY . ./
 
 # entrypoint
