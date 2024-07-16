@@ -8,31 +8,32 @@ from django.core.validators import (
     ProhibitNullCharactersValidator
 )
 from django.urls import reverse
+from django_choices_field import TextChoicesField
 
 
 # Create your models here.
-class Pokemon(models.Model):
-    TYPES = (
-        ('Bug', 'Bug'),
-        ('Dark', 'Dark'),
-        ('Dragon', 'Dragon'),
-        ('Electric', 'Electric'),
-        ('Fairy', 'Fairy'),
-        ('Fighting', 'Fighting'),
-        ('Fire', 'Fire'),
-        ('Flying', 'Flying'),
-        ('Ghost', 'Ghost'),
-        ('Grass', 'Grass'),
-        ('Ground', 'Ground'),
-        ('Ice', 'Ice'),
-        ('Normal', 'Normal'),
-        ('Poison', 'Poison'),
-        ('Psychic', 'Psychic'),
-        ('Rock', 'Rock'),
-        ('Steel', 'Steel'),
-        ('Water', 'Water'),
-    )
+class TypeCategory(models.TextChoices):
+    BUG = ('Bug', 'Bug')
+    DARK = ('Dark', 'Dark')
+    DRAGON = ('Dragon', 'Dragon')
+    ELECTRIC = ('Electric', 'Electric')
+    FAIRY = ('Fairy', 'Fairy')
+    FIGHTING = ('Fighting', 'Fighting')
+    FIRE = ('Fire', 'Fire')
+    FLYING = ('Flying', 'Flying')
+    GHOST = ('Ghost', 'Ghost')
+    GRASS = ('Grass', 'Grass')
+    GROUND = ('Ground', 'Ground')
+    ICE = ('Ice', 'Ice')
+    NORMAL = ('Normal', 'Normal')
+    POISON = ('Poison', 'Poison')
+    PSYCHIC = ('Psychic', 'Psychic')
+    ROCK = ('Rock', 'Rock')
+    STEEL = ('Steel', 'Steel')
+    WATER = ('Water', 'Water')
 
+
+class Pokemon(models.Model):
     name = models.CharField(
         max_length=30,
         null=False,
@@ -44,10 +45,10 @@ class Pokemon(models.Model):
             ProhibitNullCharactersValidator()
         ]
     )
-    type1 = models.CharField(
+    type1 = TextChoicesField(
         max_length=10,
         null=False,
-        choices=TYPES,
+        choices_enum=TypeCategory,
         validators=[
             MinLengthValidator(3),
             MaxLengthValidator(10),
@@ -55,10 +56,10 @@ class Pokemon(models.Model):
             ProhibitNullCharactersValidator()
         ]
     )
-    type2 = models.CharField(
+    type2 = TextChoicesField(
         max_length=10,
         null=True,
-        choices=TYPES,
+        choices_enum=TypeCategory,
         validators=[
             MinLengthValidator(3),
             MaxLengthValidator(10),

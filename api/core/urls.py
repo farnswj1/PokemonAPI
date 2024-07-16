@@ -1,19 +1,15 @@
 from django.urls import path
-from rest_framework.schemas import get_schema_view
+from strawberry.django.views import GraphQLView
 from core import views
+from core.schemas import api_schema, graphql_schema
 
 
 app_name = 'core'
-
-schema = get_schema_view(
-    title='Pokemon API',
-    description='This is an API that provides data on Pokemon.',
-    version='1.0.0'
-)
 
 urlpatterns = [
     path('login', views.MyTokenObtainPairView.as_view(), name='login'),
     path('refresh', views.MyTokenRefreshView.as_view(), name='refresh'),
     path('docs', views.APIDocumentationView.as_view(), name='docs'),
-    path('openapi', schema, name='openapi-schema'),
+    path('openapi', api_schema, name='openapi-schema'),
+    path('graphql', GraphQLView.as_view(schema=graphql_schema), name='graphql'),
 ]
