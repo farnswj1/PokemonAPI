@@ -1,5 +1,8 @@
+from django.conf import settings
 from rest_framework.schemas import get_schema_view
+from strawberry.extensions import AddValidationRules
 from strawberry_django.optimizer import DjangoOptimizerExtension
+from graphql.validation import NoSchemaIntrospectionCustomRule
 from pokemon.types import Pokemon
 import strawberry
 import strawberry_django
@@ -17,7 +20,9 @@ class Query:
     pokemon: list[Pokemon] = strawberry_django.field()
 
 
-graphql_schema = strawberry.Schema(
-    query=Query,
-    extensions=[DjangoOptimizerExtension]
-)
+extensions = [DjangoOptimizerExtension]
+
+if not settings.DEBUG:
+    extensions.append(AddValidationRules([NoSchemaIntrospectionCustomRule]))
+
+graphql_schema = strawberry.Schema(query=Query, extensions=extensions)
