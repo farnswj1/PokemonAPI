@@ -15,14 +15,14 @@ The project uses the following:
 For additional information on project specifications, see the `Pipfile`.
 
 ### Setting up the API
-In the `api/` directory, create a `.env` file that contains the following environment variables:
+In the `app/` directory, create a `.env` file that contains the following environment variables:
 ```
 SECRET_KEY=[somerandomstring]
 
 DEBUG=False
-ALLOWED_HOSTS=localhost 127.0.0.1
-CSRF_TRUSTED_ORIGINS=http://localhost http://127.0.0.1
-CORS_ALLOWED_ORIGIN_REGEXES=^https?://(localhost|127\.0\.0\.1)$
+ALLOWED_HOSTS="localhost 127.0.0.1"
+CSRF_TRUSTED_ORIGINS="http://localhost http://127.0.0.1"
+CORS_ALLOWED_ORIGIN_REGEXES="^https?://(localhost|127\.0\.0\.1)$"
 
 DB_NAME=pokemonapi
 DB_HOST=postgres
@@ -30,7 +30,7 @@ DB_USER=postgres
 DB_PASSWORD=password
 DB_PORT=5432
 
-REDIS_URL=redis://redis:6379/1
+REDIS_URL=redis://redis:6379/0
 ```
 
 ### Setting up PostgreSQL
@@ -50,6 +50,6 @@ To build, run `docker compose build`
 To run the web API, run `docker compose up -d`, then go to http://localhost/api/docs using your web browser.
 
 ## Populating the Database
-This project provides data to use for the project. Populating the database should only be done once to avoid duplicate data. To do so, run `docker exec api python manage.py loaddata data.json`.
+This project provides data to use for the project. Populating the database should only be done once to avoid duplicate data. To do so, run `docker exec app python manage.py loaddata data.json`.
 
-To create a staff user, run `docker exec -it api python manage.py createsuperuser` and fill out the fields in the prompt.
+To create a staff user, run `docker exec -it app python manage.py createsuperuser` and fill out the fields in the prompt.

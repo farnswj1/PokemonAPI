@@ -1,0 +1,24 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#14161a" />
+    <meta name="author" content="Justin Farnsworth" />
+    <meta name="description" content="An API that provides data on Pokemon." />
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" />
+    <link rel="apple-touch-icon" href="{% static 'images/logo192.png' %}" />
+    <link rel="manifest" href="{% static 'manifest.json' %}" />
+    <title>Pokemon API</title>
+  </head>
+  <body>
+    <h1>Pokemon API</h1>
+    <p>Select an API to use:</p>
+    <ul>
+      <li><a href="{% url 'core:api:docs' %}">REST API</a></li>
+      <li><a href="{% url 'core:graphql' %}">GraphQL</a></li>
+    </ul>
+  </body>
+</html>

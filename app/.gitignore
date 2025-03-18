@@ -1,0 +1,8 @@
+__pycache__/
+.coverage
+.env*
+.idea
+.pytest_cache/
+assets/
+htmlcov/
+media/

@@ -1,0 +1,11 @@
+__pycache__/
+.coverage
+.dockerignore
+.env*
+.gitignore
+.idea
+.pytest_cache/
+assets/
+Dockerfile
+htmlcov/
+media/

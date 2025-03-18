@@ -1,33 +1,38 @@
 services:
   postgres:
     container_name: postgres
-    image: postgres:16
+    image: postgres:17
     restart: always
     env_file:
       - ./postgres/.env
     volumes:
       - postgres_data:/var/lib/postgresql/data/:rw
+    networks:
+      - private
   redis:
     container_name: redis
     image: redis:7
     restart: always
     volumes:
       - redis_data:/data:rw
-  api:
-    container_name: api
-    image: api
-    build: api
+    networks:
+      - private
+  app:
+    container_name: app
+    image: app
+    build: app
     restart: always
     env_file:
-      - ./api/.env
-    volumes:
-      - api_static:/opt/app/static:rw
+      - ./app/.env
+    networks:
+      - public
+      - private
     depends_on:
       - postgres
       - redis
   nginx:
     container_name: nginx
-    image: nginx:1.25-alpine
+    image: nginx:1.27-alpine
     restart: always
     ports:
       - "80:80"
@@ -36,9 +41,10 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - certbot_data:/var/www/certbot/:ro
       - ssl_certs:/etc/letsencrypt/:ro
-      - api_static:/opt/api/static:ro
+    networks:
+      - public
     depends_on:
-      - api
+      - app
   certbot:
     container_name: certbot
     image: certbot/certbot
@@ -46,11 +52,15 @@ services:
       - ./certbot/cli.ini:/etc/letsencrypt/cli.ini:ro
       - certbot_data:/var/www/certbot/:rw
       - ssl_certs:/etc/letsencrypt/:rw
+    networks:
+      - public
     depends_on:
       - nginx
 volumes:
   postgres_data:
   redis_data:
-  api_static:
   certbot_data:
   ssl_certs:
+networks:
+  public:
+  private:

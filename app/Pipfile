@@ -1,0 +1,29 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[packages]
+django = "==5.1.7"
+djangorestframework = "==3.15.2"
+django-cors-headers = "==4.7.0"
+django-filter = "==24.3"
+djangorestframework-simplejwt = "==5.5.0"
+django-choices-field = "==2.3.0"
+psycopg = "==3.2.6"
+graphene-django = "==3.2.3"
+redis = {extras = ["hiredis"], version = "==5.2.0"}
+pyyaml = "==6.0.2"
+uritemplate = "==4.1.1"
+inflection = "==0.5.1"
+whitenoise = "==6.9.0"
+gunicorn = "==23.0.0"
+
+[dev-packages]
+ipython = "==9.0.2"
+factory-boy = "==3.3.3"
+pytest-django = "==4.10.0"
+coverage = "7.7.0"
+
+[requires]
+python_version = "3.13"

@@ -1,6 +1,0 @@
-.gitignore
-.env
-.dockerignore
-Dockerfile
-__pycache__
-media
